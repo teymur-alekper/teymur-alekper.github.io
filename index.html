@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Портфолио — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1F3F0;
+  --ink:#14171A;
+  --ink-2:#4A545C;
+  --ink-3:#78838B;
+  --rule:#D3D9D2;
+  --blue:#0B4F8F;
+  --aqua:#17838F;
+  --draft-ink:#7A4E00;
+  --draft-bg:#F7EFDC;
+  --draft-line:#C9A961;
+  --sp:clamp(1rem,3vw,1.6rem);
+  --maxw:62rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+
+/* draft */
+.draft-bar{
+  background:var(--draft-bg);border-bottom:1px solid var(--draft-line);
+  color:var(--draft-ink);font-family:"IBM Plex Mono",monospace;
+  font-size:.75rem;letter-spacing:.04em;padding:.6rem 0;
+}
+.draft-bar strong{font-weight:500}
+.slot{
+  border:1px dashed var(--draft-line);background:var(--draft-bg);
+  padding:1.1rem 1.2rem;margin:1.2rem 0;border-radius:2px;
+}
+.slot-tag{
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--draft-ink);font-weight:500;
+}
+.slot-body{font-size:.87rem;color:var(--draft-ink);margin:.45rem 0 0}
+.slot-body em{font-style:normal;opacity:.75}
+
+/* masthead */
+.masthead{border-bottom:1px solid var(--rule);padding:1.4rem 0}
+.masthead-inner{display:flex;flex-wrap:wrap;gap:.8rem 1.5rem;align-items:baseline;justify-content:space-between}
+.name{font-family:Archivo,sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;margin:0}
+.masthead .role{font-size:.82rem;color:var(--ink-2)}
+.contacts{display:flex;gap:1.1rem;font-family:"IBM Plex Mono",monospace;font-size:.75rem}
+.contacts a,.contacts button{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;white-space:nowrap}
+.contacts a:hover,.contacts button:hover{color:var(--blue);border-color:var(--blue)}
+
+/* hero */
+.hero{padding:clamp(2.6rem,7vw,4.2rem) 0 clamp(1.6rem,4vw,2.4rem)}
+.thesis{
+  font-family:Archivo,sans-serif;font-weight:600;
+  font-size:clamp(1.45rem,4vw,2.25rem);line-height:1.22;
+  letter-spacing:-.022em;margin:1.1rem 0 0;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.context{
+  margin-top:1.7rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-size:.9rem;color:var(--ink-2);
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+
+/* artifact */
+.artifact{border-bottom:1px solid var(--rule);padding:0 0 1.6rem}
+.art-toggle{
+  display:flex;align-items:center;gap:.6rem;width:100%;text-align:left;
+  font-family:"IBM Plex Mono",monospace;font-size:.76rem;
+  letter-spacing:.04em;color:var(--ink-2);padding:.7rem 0;
+}
+.art-toggle:hover{color:var(--blue)}
+.art-caret{
+  width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;
+  transform:rotate(45deg);transition:transform .18s ease;flex:0 0 auto;margin-bottom:2px;
+}
+.art-toggle[aria-expanded="true"] .art-caret{transform:rotate(-135deg);margin-bottom:-2px}
+.art-body[hidden]{display:none}
+.art-body{padding:.6rem 0 0}
+.toc{list-style:none;margin:0;padding:0;font-size:.88rem}
+.toc > li{margin-bottom:.75rem}
+.toc-h{font-weight:500}
+.toc-sub{list-style:none;margin:.25rem 0 0;padding:0 0 0 1.1rem;color:var(--ink-2);font-size:.84rem}
+.toc-sub li{padding-left:.9rem;position:relative;margin-bottom:.15rem}
+.toc-sub li::before{content:"";position:absolute;left:0;top:.68em;width:4px;height:1px;background:var(--ink-3)}
+.art-note{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-3);
+  margin:1.2rem 0 0;padding-top:.8rem;border-top:1px solid var(--rule);
+}
+
+/* case list */
+.case-list{list-style:none;margin:0;padding:0}
+.case-list li{border-bottom:1px solid var(--rule)}
+.case-row{display:block;width:100%;text-align:left;padding:1.7rem 0;transition:padding-left .18s ease}
+.case-row:hover,.case-row:focus-visible{padding-left:.6rem}
+.case-row .eyebrow,.case-row .case-title,.case-row .shift-label,.case-row .case-meta{display:block}
+.case-title{
+  font-family:Archivo,sans-serif;font-weight:600;
+  font-size:clamp(1.05rem,2.4vw,1.3rem);letter-spacing:-.014em;
+  line-height:1.3;margin:.7rem 0 0;
+}
+.case-meta{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-3);letter-spacing:.03em;margin-top:.75rem}
+
+/* signature: state shift */
+.shift{display:flex;align-items:center;gap:.7rem;margin-top:.9rem;flex-wrap:wrap}
+.shift-state{font-family:"IBM Plex Mono",monospace;font-size:.83rem;letter-spacing:.01em}
+.shift-state.before{color:var(--ink-3)}
+.shift-state.after{color:var(--blue);font-weight:500}
+.shift-track{flex:1 1 2.5rem;min-width:2.5rem;height:1px;background:var(--rule);position:relative}
+.shift-track::after{
+  content:"";position:absolute;right:0;top:50%;width:5px;height:5px;
+  border-top:1px solid var(--aqua);border-right:1px solid var(--aqua);
+  transform:translateY(-50%) rotate(45deg);
+}
+.shift-label{font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--ink-3);margin-top:.4rem;letter-spacing:.02em;line-height:1.5}
+
+/* case detail */
+.back{font-family:"IBM Plex Mono",monospace;font-size:.73rem;letter-spacing:.06em;color:var(--ink-3);padding:.4rem 0;margin-bottom:1.6rem}
+.back:hover{color:var(--blue)}
+.case-head{border-bottom:1px solid var(--rule);padding-bottom:1.8rem;margin-bottom:2.2rem}
+.case-head h2{
+  font-family:Archivo,sans-serif;font-weight:600;
+  font-size:clamp(1.35rem,3.4vw,1.95rem);line-height:1.22;
+  letter-spacing:-.02em;margin:1.15rem 0 0;
+}
+.block{margin-bottom:2.3rem}
+.block h3{
+  font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.71rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);margin:0 0 .85rem;
+}
+.block p{margin:0 0 .9rem;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.block p:last-child{margin-bottom:0}
+.pull{border-left:2px solid var(--aqua);padding:.15rem 0 .15rem 1.1rem;margin:1.3rem 0;font-size:1.02rem}
+.pull cite{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-3);margin-top:.55rem;letter-spacing:.03em}
+.metric{border-top:1px solid var(--rule);padding-top:1.15rem;margin-top:1.4rem}
+.metric:first-of-type{margin-top:0;border-top:0;padding-top:0}
+.metric-name{font-weight:500;font-size:.94rem;margin:0 0 .1rem}
+.facts{list-style:none;margin:.7rem 0 0;padding:0}
+.facts li{padding-left:1rem;position:relative;margin-bottom:.4rem;font-size:.92rem;color:var(--ink-2)}
+.facts li::before{content:"";position:absolute;left:0;top:.62em;width:4px;height:1px;background:var(--ink-3)}
+
+/* timeline */
+.timeline{border-top:1px solid var(--rule);padding:2.2rem 0 3.5rem}
+.tl-list{list-style:none;margin:1.2rem 0 0;padding:0}
+.tl-list li{display:flex;flex-wrap:wrap;gap:.2rem 1.2rem;padding:.62rem 0;border-bottom:1px solid var(--rule);font-size:.87rem}
+.tl-when{font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--ink-3);flex:0 0 9.5rem}
+.tl-org{font-weight:500}
+.tl-role{color:var(--ink-2)}
+
+footer{border-top:1px solid var(--rule);padding:1.6rem 0 3rem}
+footer p{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-3);margin:0}
+
+@media (max-width:34rem){
+  .tl-when{flex:0 0 100%}
+  .contacts{gap:.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div>
+      <p class="name">Лугвищик Теймур Алекпер оглы</p>
+      <div class="role">Product Manager · 7+ лет</div>
+    </div>
+    <nav class="contacts" aria-label="Контакты">
+      <a href="https://t.me/AZTIGP" target="_blank" rel="noopener">telegram</a><button class="copy-mail" data-mail="alekper.ogly@gmail.com">gmail</button><a href="https://hh.ru/resume/51ecffbdff10ee497f0039ed1f7935746b646a" target="_blank" rel="noopener">резюме</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════ СПИСОК ══════════ -->
+<main id="listView">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Портфолио продуктовых решений</p>
+      <h1 class="thesis">Нахожу проблемы, которых никто не заявлял, и решаю их на уровне платформы, а не заказа. Строю продуктовую стратегию, из которой эти решения следуют.</h1>
+      <p class="context">Пять решений из работы над Prefix Pro — ERP для телеком-операторов: восемь модулей от биллинга до схемы сети, пять операторов, ~250 тыс. абонентов. Шестое — из запуска нового направления в e-motion. Это выборка, а не полный перечень сделанного.</p>
+    </div>
+  </section>
+
+  <section class="artifact">
+    <div class="wrap">
+      <button class="art-toggle" aria-expanded="false" aria-controls="artBody" id="artToggle">
+        <span class="art-caret" aria-hidden="true"></span>
+        Артефакт: продуктовая стратегия Prefix Pro — структура документа
+      </button>
+      <div class="art-body" id="artBody" hidden>
+        <ol class="toc">
+          <li><span class="toc-h">Executive Summary</span></li>
+          <li><span class="toc-h">1. Миссия и видение</span></li>
+          <li><span class="toc-h">2. Анализ рынка</span>
+            <ul class="toc-sub"><li>TAM / SAM / SOM</li><li>Конкурентная среда</li><li>Регуляторный контекст</li><li>PESTLE</li><li>SWOT</li><li>TOWS</li></ul>
+          </li>
+          <li><span class="toc-h">3. Позиционирование</span>
+            <ul class="toc-sub"><li>Целевые сегменты и ICP</li><li>Ценностное предложение</li><li>Дифференциация</li></ul>
+          </li>
+          <li><span class="toc-h">4. Go-to-Market &amp; Business Model</span>
+            <ul class="toc-sub"><li>Модель продаж</li><li>Маркетинг и каналы привлечения</li><li>Структура доходов</li><li>Цикл сделки</li><li>План продаж</li><li>План доходов</li></ul>
+          </li>
+          <li><span class="toc-h">5. Стратегические ставки и приоритеты</span></li>
+          <li><span class="toc-h">6. Стратегические цели — OKR (O1–O9)</span>
+            <ul class="toc-sub"><li>North Star Metric: Индекс зрелости использования</li><li>Ключевые операции по модулям</li><li>Input-метрики</li></ul>
+          </li>
+          <li><span class="toc-h">7. Продуктовая стратегия</span>
+            <ul class="toc-sub"><li>Core-модель</li><li>Портфель продуктовых гипотез</li></ul>
+          </li>
+          <li><span class="toc-h">8. Продуктовый роадмап</span></li>
+          <li><span class="toc-h">9. Технологическая стратегия</span>
+            <ul class="toc-sub"><li>Архитектурные принципы</li><li>Лицензирование</li></ul>
+          </li>
+          <li><span class="toc-h">10. Риски и допущения</span>
+            <ul class="toc-sub"><li>Ключевые допущения и триггеры пересмотра</li><li>Сквозные риски</li></ul>
+          </li>
+        </ol>
+        <p class="art-note">Показана только структура. Содержание не раскрывается.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <ul class="case-list" style="padding-top:1.4rem">
+
+      <li><button class="case-row" data-case="akcii">
+        <span class="eyebrow">Платформенное решение · Севстар</span>
+        <span class="case-title">Справочник акций: отказ от платных доработок в пользу настройки</span>
+        <span class="shift">
+          <span class="shift-state before">2 месяца и 200 тыс. ₽ разработки</span>
+          <span class="shift-track" aria-hidden="true"></span>
+          <span class="shift-state after">15 минут настройки</span>
+        </span>
+        <span class="shift-label">Запуск типовой акции силами администратора оператора</span>
+        <span class="case-meta">Prefix Pro · Севстар · Product Manager · с 2023</span>
+      </button></li>
+
+      <li><button class="case-row" data-case="gar">
+        <span class="eyebrow">Платформенное решение · Севстар</span>
+        <span class="case-title">Интеграция с ГАР: источник правды вместо доработок</span>
+        <span class="shift">
+          <span class="shift-state before">30% адресов с дублями и ошибками</span>
+          <span class="shift-track" aria-hidden="true"></span>
+          <span class="shift-state after">0</span>
+        </span>
+        <span class="shift-label">Адресная база оператора</span>
+        <span class="case-meta">Prefix Pro · Севстар · Product Manager · с 2023</span>
+      </button></li>
+
+      <li><button class="case-row" data-case="edo">
+        <span class="eyebrow">Интеграция · Севстар</span>
+        <span class="case-title">Интеграция с 1С и ЭДО: платформенное решение вместо доработки под заказчика</span>
+        <span class="shift">
+          <span class="shift-state before">следующий рабочий день</span>
+          <span class="shift-track" aria-hidden="true"></span>
+          <span class="shift-state after">тот же день · ~4 часа</span>
+        </span>
+        <span class="shift-label">Полный цикл документа: создание → подписание → отправка</span>
+        <span class="case-meta">Prefix Pro · Севстар · Product Manager · с 2023</span>
+      </button></li>
+
+      <li><button class="case-row" data-case="razvarki">
+        <span class="eyebrow">Схема сети · Севстар</span>
+        <span class="case-title">Схемы разварок оптической сети: возврат схемы в систему</span>
+        <span class="shift">
+          <span class="shift-state before">Visio и бумага</span>
+          <span class="shift-track" aria-hidden="true"></span>
+          <span class="shift-state after">единый источник в системе</span>
+        </span>
+        <span class="shift-label">Параллельное ведение схем прекращено полностью</span>
+        <span class="case-meta">Prefix Pro · Севстар · Product Manager · с 2023</span>
+      </button></li>
+
+      <li><button class="case-row" data-case="kanban">
+        <span class="eyebrow">Задания · Севстар</span>
+        <span class="case-title">Канбан по реальным этапам работ: возврат заданий в систему</span>
+        <span class="shift">
+          <span class="shift-state before">часть работы в сторонних трекерах</span>
+          <span class="shift-track" aria-hidden="true"></span>
+          <span class="shift-state after">+18% заданий в системе</span>
+        </span>
+        <span class="shift-label">Скачок после раскатки и удержание на новом уровне</span>
+        <span class="case-meta">Prefix Pro · Севстар · Product Manager · с 2023</span>
+      </button></li>
+
+      <li><button class="case-row" data-case="sharing">
+        <span class="eyebrow">Запуск направления · e-motion</span>
+        <span class="case-title">Шеринг электротранспорта: проверил спрос, но не жизнеспособность</span>
+        <span class="shift">
+          <span class="shift-state before">6 месяцев на запуск</span>
+          <span class="shift-track" aria-hidden="true"></span>
+          <span class="shift-state after">2 партнёра при потребности в десятках</span>
+        </span>
+        <span class="shift-label">Гипотеза не подтвердилась</span>
+        <span class="case-meta">e-motion · Product Manager · новое направление · 2021–2022</span>
+      </button></li>
+
+    </ul>
+  </div>
+
+</main>
+
+<!-- ══════════ КЕЙС: АКЦИИ ══════════ -->
+<main class="caseView" id="case-akcii" hidden>
+<div class="wrap" style="padding-top:2rem">
+  <button class="back" data-back>← Все кейсы</button>
+  <div class="case-head">
+    <p class="eyebrow">Платформенное решение · Prefix Pro · Севстар · Product Manager · с 2023</p>
+    <h2>Справочник акций: отказ от платных доработок в пользу настройки</h2>
+    <div class="shift" style="margin-top:1.3rem">
+      <span class="shift-state before">2 месяца и 200 тыс. ₽ разработки</span>
+      <span class="shift-track" aria-hidden="true"></span>
+      <span class="shift-state after">15 минут настройки</span>
+    </div>
+    <p class="shift-label">Запуск типовой акции силами администратора оператора</p>
+  </div>
+
+  <div class="block"><h3>Сигнал</h3>
+    <p>Заметил, что каждая акция уходит в разработку как отдельная задача — включая те, что отличались от предыдущих только параметрами. Запроса на изменение не было: и оператор, и команда воспринимали такой порядок как норму. Оператор платил за каждую типовую акцию, разработка стабильно занималась повторяющимся.</p>
+  </div>
+
+  <div class="block"><h3>Решение</h3>
+    <p>Вынес типовые параметры акции в настраиваемый справочник. Границу провёл по частотности: повторяющееся от акции к акции становится настройкой, редкое и нестандартное остаётся разработкой.</p>
+    <p>Решение означало сознательный отказ от повторяющейся платной выручки — типовые акции переставали быть заказом на разработку. Пошёл на это, потому что доработки не масштабируются: каждый новый оператор добавляет свою очередь однотипных задач, выручка от кастома упирается в пропускную способность команды, а разработка занята тем, что не требует кода. Перевод в настройку снимает потолок и высвобождает команду под задачи, которые действительно нужно программировать.</p>
+  </div>
+
+  <div class="block"><h3>Эффект</h3>
+    <div class="metric">
+      <p class="metric-name">Запуск типовой акции</p>
+      <div class="shift">
+        <span class="shift-state before">2 месяца, 200 тыс. ₽</span>
+        <span class="shift-track" aria-hidden="true"></span>
+        <span class="shift-state after">15 минут</span>
+      </div>
+      <ul class="facts">
+        <li>Администратор оператора запускает акцию сам, без заявки в разработку</li>
+        <li>При 2–4 типовых акциях в квартал — порядка 1,6–3,2 млн ₽ в год, которые оператор перестал платить</li>
+        <li>Оператор стал запускать акции чаще, перестав зависеть от очереди разработки</li>
+      </ul>
+    </div>
+    <div class="metric">
+      <p class="metric-name">Состав потока разработки</p>
+      <ul class="facts">
+        <li>До: каждая акция — отдельная задача, большинство типовые</li>
+        <li>После: типовые заводятся настройкой, в разработку попадают только нетиповые — около одной в четыре месяца</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block"><h3>Охват</h3><p>Работает у одного оператора.</p></div>
+</div>
+</main>
+
+<!-- ══════════ КЕЙС: ГАР ══════════ -->
+<main class="caseView" id="case-gar" hidden>
+<div class="wrap" style="padding-top:2rem">
+  <button class="back" data-back>← Все кейсы</button>
+  <div class="case-head">
+    <p class="eyebrow">Платформенное решение · Prefix Pro · Севстар · Product Manager · с 2023</p>
+    <h2>Интеграция с ГАР: источник правды вместо доработок</h2>
+    <div class="shift" style="margin-top:1.3rem">
+      <span class="shift-state before">30% адресов с дублями и ошибками</span>
+      <span class="shift-track" aria-hidden="true"></span>
+      <span class="shift-state after">0</span>
+    </div>
+    <p class="shift-label">Адресная база оператора</p>
+  </div>
+
+  <div class="block"><h3>Сигнал</h3>
+    <p>Адреса заводились вручную во внутреннем справочнике. Приходили жалобы абонентов и поток запросов на доработку; в ответ ограничивали права на редактирование — но это не решало проблему, а лишь замедляло появление новых ошибок. Запрос к базе показал масштаб: 30% адресов содержали дубли или ошибки.</p>
+  </div>
+
+  <div class="block"><h3>Решение</h3>
+    <p>Развилка — продолжать закрывать запросы точечными доработками или сделать платформенное решение, изменив источник данных. Выбрал второе: справочник перестал быть местом, где адреса вводят вручную, и стал отражением ГАР как источника правды.</p>
+    <p>Пока адреса набираются руками, ошибки воспроизводятся при любых ограничениях доступа — устранять нужно причину, а не последствия.</p>
+  </div>
+
+  <div class="block"><h3>Эффект</h3>
+    <ul class="facts">
+      <li>Доля проблемных адресов: 30% → 0. Администраторы сами определили, какие разночтения с ГАР допустимы, а какие нет</li>
+      <li>Жалобы абонентов на адреса прекратились; вместо запросов на исправление от оператора пошли предложения по развитию</li>
+    </ul>
+  </div>
+
+  <div class="block"><h3>Охват</h3><p>Работает у двух операторов.</p></div>
+</div>
+</main>
+
+<!-- ══════════ КЕЙС: ЭДО ══════════ -->
+<main class="caseView" id="case-edo" hidden>
+<div class="wrap" style="padding-top:2rem">
+  <button class="back" data-back>← Все кейсы</button>
+  <div class="case-head">
+    <p class="eyebrow">Интеграция · Prefix Pro · Севстар · Product Manager · с 2023</p>
+    <h2>Интеграция с 1С и ЭДО: платформенное решение вместо доработки под заказчика</h2>
+    <div class="shift" style="margin-top:1.3rem">
+      <span class="shift-state before">следующий рабочий день</span>
+      <span class="shift-track" aria-hidden="true"></span>
+      <span class="shift-state after">тот же день · ~4 часа</span>
+    </div>
+    <p class="shift-label">Полный цикл документа: создание → подписание → отправка</p>
+  </div>
+
+  <div class="block"><h3>Сигнал</h3>
+    <p>Провёл серию интервью с участниками документооборота оператора — три бухгалтера, три аккаунт-менеджера, юрист. Процесс описывался всеми одинаково:</p>
+    <blockquote class="pull">«Если с самого утра готов документ, то повезёт, если будет отправлен завтра»<cite>из интервью с участниками процесса</cite></blockquote>
+    <p>Ограничение оказалось не в скорости работы людей, а в маршруте документа и раздробленности процесса. В нём участвовали бухгалтерия, аккаунт-менеджмент и юрист, а сам документ проходил через три разных контура: подготовка — в одной системе или на бумаге, подписание и отправка — в другой системе или по почте, координация и фиксация результата — в третьей. День терялся не на работе с документом, а на переходах между контурами и на согласовании между людьми, у каждого из которых была своя часть процесса.</p>
+  </div>
+
+  <div class="block"><h3>Решение</h3>
+    <p>Интеграция Prefix Pro с 1С и ЭДО: создание типовых документов, подписание и отправка перешли в единый контур.</p>
+    <p>Вместе с этим перестроился и сам процесс. Раньше он был разложен по трём системам и личным перепискам между участниками — теперь весь маршрут документа лежит внутри Prefix Pro, а аккаунт-менеджер ведёт его в одном месте, а не собирает статус по разным системам и личным сообщениям.</p>
+    <p>Собственное решение внутри платформы не рассматривал как рабочий вариант: оно дублировало бы устоявшиеся специализированные системы, с которыми операторы уже работают, и добавило бы стоимость поддержки без выигрыша для клиента.</p>
+    <p>Главное решение было другим. Проблема существовала у всех пяти операторов — где-то острее, где-то мягче, — и каждый хотел закрыть её индивидуальной доработкой под свой сложившийся процесс. Этот путь означал пять расходящихся веток одного решения и пятикратную стоимость поддержки. Сформулировал общее решение с единой логикой документооборота, без персональных веток. Готовы к нему на тот момент были двое операторов из пяти.</p>
+  </div>
+
+  <div class="block"><h3>Эффект</h3>
+    <div class="metric">
+      <p class="metric-name">Время от создания документа до отправки подписанным</p>
+      <div class="shift">
+        <span class="shift-state before">следующий рабочий день</span>
+        <span class="shift-track" aria-hidden="true"></span>
+        <span class="shift-state after">тот же день · ~4 часа</span>
+      </div>
+      <ul class="facts">
+        <li>«До» — оценка по интервью с семью участниками процесса</li>
+        <li>«После» — замер по данным системы на том же отрезке процесса</li>
+        <li>Поток ~30 тыс. документов в месяц, наблюдение 3 месяца</li>
+      </ul>
+    </div>
+    <div class="metric">
+      <p class="metric-name">Трудозатраты бухгалтерии на типовые документы</p>
+      <div class="shift">
+        <span class="shift-state before">~9 человеко-часов / день</span>
+        <span class="shift-track" aria-hidden="true"></span>
+        <span class="shift-state after">~1,5 человеко-часа / день</span>
+      </div>
+      <ul class="facts">
+        <li>3 бухгалтера × ~3 часа в день → 3 бухгалтера × ~30 минут в день</li>
+        <li>Освобождено ~7,5 человеко-часов ежедневно</li>
+        <li>Обе оценки — интервью с одними и теми же тремя бухгалтерами до и после внедрения</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block"><h3>Охват и ограничение</h3>
+    <p>Интеграция подключена у одного оператора, второй сейчас внедряется. Ограничение не техническое — на стороне нового оператора нужны донастройки, но основной барьер в том, что документооборот у каждого сложился по-своему, и переход на общую логику требует перестроить процесс.</p>
+  </div>
+
+  <div class="block"><h3>Что дальше</h3>
+    <p>Задача лежит не в разработке, а в снижении порога внедрения, и решается с двух сторон. Со стороны продукта — сначала переводить оператора на более простые элементы системы: пока базовые операции не перешли в Prefix Pro, интеграция документооборота преждевременна. Со стороны работы с клиентом — консультировать по перестройке процесса, потому что техническое подключение без этого эффекта не даёт.</p>
+  </div>
+</div>
+</main>
+
+<!-- ══════════ КЕЙС: РАЗВАРКИ ══════════ -->
+<main class="caseView" id="case-razvarki" hidden>
+<div class="wrap" style="padding-top:2rem">
+  <button class="back" data-back>← Все кейсы</button>
+  <div class="case-head">
+    <p class="eyebrow">Схема сети · Prefix Pro · Севстар · Product Manager · с 2023</p>
+    <h2>Схемы разварок оптической сети: возврат схемы в систему</h2>
+    <div class="shift" style="margin-top:1.3rem">
+      <span class="shift-state before">Visio и бумага</span>
+      <span class="shift-track" aria-hidden="true"></span>
+      <span class="shift-state after">единый источник в системе</span>
+    </div>
+    <p class="shift-label">Параллельное ведение схем прекращено полностью</p>
+  </div>
+
+  <div class="block"><h3>Сигнал</h3>
+    <p>Заметил, что схемы разварок ведутся в Visio и на бумаге, а затем ещё раз заносятся в систему. Двойная работа и, что важнее, два источника правды: какая версия схемы актуальна — неочевидно, а по схеме работают монтажники.</p>
+    <p>Интервью подтвердило практику, проверка в системе показала причину: имеющегося функционала для проектирования не хватало.</p>
+  </div>
+
+  <div class="block"><h3>Решение</h3>
+    <p>Выбор был между интеграцией готового решения и собственным редактором. Готовые решения не покрывали специфику разварок оптической сети, а собственный редактор можно адаптировать под процессы операторов. Выбрал строить.</p>
+  </div>
+
+  <div class="block"><h3>Эффект</h3>
+    <ul class="facts">
+      <li>Visio и бумага перестали использоваться полностью, дублирование прекратилось — схема существует в одном месте</li>
+      <li>Скорость проектирования и изменения топологии выше примерно на 20% — оценка пользователей по интервью</li>
+    </ul>
+  </div>
+
+  <div class="block"><h3>Охват</h3><p>Работает у одного оператора.</p></div>
+</div>
+</main>
+
+<!-- ══════════ КЕЙС: КАНБАН ══════════ -->
+<main class="caseView" id="case-kanban" hidden>
+<div class="wrap" style="padding-top:2rem">
+  <button class="back" data-back>← Все кейсы</button>
+  <div class="case-head">
+    <p class="eyebrow">Задания · Prefix Pro · Севстар · Product Manager · с 2023</p>
+    <h2>Канбан по реальным этапам работ: возврат заданий в систему</h2>
+    <div class="shift" style="margin-top:1.3rem">
+      <span class="shift-state before">часть работы в сторонних трекерах</span>
+      <span class="shift-track" aria-hidden="true"></span>
+      <span class="shift-state after">+18% заданий в системе</span>
+    </div>
+    <p class="shift-label">Скачок после раскатки и удержание на новом уровне</p>
+  </div>
+
+  <div class="block"><h3>Сигнал</h3>
+    <p>Наблюдение показало, что канбан построен на базовом наборе статусов, не совпадающем с реальными этапами работ по заданиям, подключениям и заявкам. Достоверную картину пользователи собирали вручную — читали комментарии и уточняли статус друг у друга.</p>
+    <p>Интервью вскрыло следствие: часть работы по заданиям вообще ушла из Prefix Pro в сторонние трекеры. Инструмент координации не просто мешал — он вытеснял операцию из системы.</p>
+  </div>
+
+  <div class="block"><h3>Решение</h3>
+    <p>Развилка была в глубине решения: гибкий конструктор канбанов с настройками уровня Jira или простые доски уровня Notion. Выбрал простые. Основание — интервью с текущими и потенциальными клиентами, наблюдение за реально используемым функционалом и анализ существующих решений: простой вариант покрывает потребности рынка полностью, а гибкость добавила бы сложность без спроса на неё.</p>
+    <p>Перестроил канбан на реальные этапы работ — отдельно для заданий, подключений и заявок.</p>
+  </div>
+
+  <div class="block"><h3>Эффект</h3>
+    <div class="metric">
+      <p class="metric-name">Возврат заданий в систему</p>
+      <ul class="facts">
+        <li>Число созданных и активных заданий: +18% сразу после раскатки, далее удержание на новом уровне</li>
+        <li>У двух операторов раскатка шла в разные даты, и скачок у каждого привязан к своей — рост не объясняется календарём или общей нагрузкой</li>
+        <li>Число заявок и подключений в тот же период не выросло: фон ровный</li>
+        <li>Интервью после запуска: часть пользователей вернулась из сторонних трекеров</li>
+      </ul>
+    </div>
+    <div class="metric">
+      <p class="metric-name">Скорость выполнения заявок и подключений</p>
+      <ul class="facts">
+        <li>Среднее время от создания до закрытия: −10%, замер по данным системы</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block"><h3>Охват</h3><p>Работает у двух операторов.</p></div>
+</div>
+</main>
+
+<!-- ══════════ КЕЙС: ШЕРИНГ ══════════ -->
+<main class="caseView" id="case-sharing" hidden>
+<div class="wrap" style="padding-top:2rem">
+  <button class="back" data-back>← Все кейсы</button>
+  <div class="case-head">
+    <p class="eyebrow">Запуск направления · e-motion · Product Manager · 2021–2022</p>
+    <h2>Шеринг электротранспорта: проверил спрос, но не жизнеспособность</h2>
+    <div class="shift" style="margin-top:1.3rem">
+      <span class="shift-state before">6 месяцев на запуск</span>
+      <span class="shift-track" aria-hidden="true"></span>
+      <span class="shift-state after">2 партнёра при потребности в десятках</span>
+    </div>
+    <p class="shift-label">Гипотеза не подтвердилась</p>
+  </div>
+
+  <div class="block"><h3>Ставка</h3>
+    <p>Запуск нового направления на базе существующей шеринговой платформы, работающей по франшизной модели. Компания при этом теряла устойчивость: бизнес-модель не сходилась и у основных продуктов, ресурс и сроки были ограничены.</p>
+    <p>Анализ рынка показывал, что успешная модель — туры, но их реализация требовала дорогого софта и оборудования. Шеринг выбрал как первый шаг: минимальные затраты на софт и железо, быстрый выход.</p>
+  </div>
+
+  <div class="block"><h3>Что было неизвестно</h3>
+    <ul class="facts">
+      <li>Пойдут ли франчайзи-партнёры в новое направление</li>
+      <li>Сойдётся ли экономика на достижимом объёме</li>
+      <li>Хватит ли результата шеринга, чтобы получить инвестиции в туры</li>
+    </ul>
+  </div>
+
+  <div class="block"><h3>Критерий проверки</h3>
+    <p>Успех определил по двум признакам: появление партнёров и доход по подпродукту.</p>
+  </div>
+
+  <div class="block"><h3>Результат</h3>
+    <p>Запуск направления занял 6 месяцев. К седьмому месяцу подключились два партнёра — при том, что юнит-экономика сходилась на десятках.</p>
+    <p>Оба критерия формально пройдены: партнёры пришли, доход пошёл. Продукт при этом не сработал — доход не покрывал операционные расходы, и на таком темпе выход на окупаемость означал годы. Ответ на вопрос об окупаемости был получен по сути сразу.</p>
+    <p>Инвестиции в туры не выделили. Собственного объёма направление не набрало, но решение принималось шире: бизнес-модель не сходилась и у основных продуктов компании.</p>
+  </div>
+
+  <div class="block"><h3>Что оказалось неверным</h3>
+    <p>Критерий проверял интерес, но не жизнеспособность. Партнёры и доход подтверждали спрос — вопрос, от которого зависела судьба продукта, был другим: сходится ли экономика на достижимом числе партнёров. Этот расчёт нужно было сделать критерием, а не следствием.</p>
+    <p>Вторая ошибка глубже. Спрос на туры уже был подтверждён исследованием рынка до запуска. Ресурс ушёл на проверку промежуточной модели, которая целевую гипотезу проверить не могла: готовность арендовать технику на час не доказывает готовность купить тур — другая цена, другой сценарий, другой клиент.</p>
+    <p>Сейчас сделал бы простое MVP туров сразу, без промежуточного шага: работающая модель, которую можно улучшать, вместо проверки спроса на то, что и так было известно.</p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap"><p>Лугвищик Теймур Алекпер оглы · портфолио продуктовых решений</p></div>
+</footer>
+
+<script>
+(function(){
+  var listView = document.getElementById('listView');
+  var views = [].slice.call(document.querySelectorAll('.caseView'));
+
+  function showList(){
+    views.forEach(function(v){ v.hidden = true; });
+    listView.hidden = false;
+    window.scrollTo(0,0);
+  }
+  function showCase(id){
+    listView.hidden = true;
+    views.forEach(function(v){ v.hidden = (v.id !== 'case-' + id); });
+    window.scrollTo(0,0);
+  }
+
+  document.querySelectorAll('[data-case]').forEach(function(btn){
+    btn.addEventListener('click', function(){ showCase(btn.getAttribute('data-case')); });
+  });
+  document.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click', showList);
+  });
+
+  var toggle = document.getElementById('artToggle');
+  var body = document.getElementById('artBody');
+  toggle.addEventListener('click', function(){
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    body.hidden = open;
+  });
+
+  var mailBtn = document.querySelector('.copy-mail');
+  if (mailBtn){
+    mailBtn.addEventListener('click', function(){
+      var mail = mailBtn.getAttribute('data-mail');
+      function done(){
+        mailBtn.textContent = 'скопировано';
+        setTimeout(function(){ mailBtn.textContent = 'gmail'; }, 1600);
+      }
+      function fallback(){
+        var ta = document.createElement('textarea');
+        ta.value = mail; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); }
+        catch(e){ mailBtn.textContent = mail; }
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(mail).then(done).catch(fallback);
+      } else { fallback(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
